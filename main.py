@@ -159,7 +159,7 @@ def _search_movie():
         for i, movie in enumerate(result):
             print("┃{nr: >3} ┆\x1b[1;36m{title-short: <30}\x1b[0m┆{year:\
 ^10}┆\x1b[1;32m{quality: ^9}\x1b[0m\
-┆\x1b[1;33m{rating: >10}\x1b[0m┆{genre: ^13}┆{seeds: >8} ┆{peers: >8}\
+┆\x1b[1;33m{rating: >10}\x1b[0m┆{genre: ^13}┆{seeds: >8} ┆{peers: >8} \
 ┃".format(**dict(nr=i+1, **movie)))
         print("┗━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━┷━━━━━━━━\
 ━┷━━━━━━━━━━┷━━━━━━━━━━━━━┷━━━━━━━━━┷━━━━━━━━━┛")
