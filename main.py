@@ -150,19 +150,19 @@ def _search_movie():
         if result is None:
             print("No results! :/")
             return 0
-        print("┏━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━┯━━━━━━━━\
-━┯━━━━━━━━━━┯━━━━━━━━━━━━━┯━━━━━━━━━┯━━━━━━━━━┓")
-        print("┃ Nr ┆            Title             ┆   Year   ┆ Quality\
- ┆  Rating  ┆    Genre    ┆  Seeds  ┆  Peers  ┃")
-        print("┠────┼──────────────────────────────┼──────────┼────────\
-─┼──────────┼─────────────┼─────────┼─────────┨")
+        print("┌────┬──────────────────────────────┬──────────┬────────\
+─┬──────────┬─────────────┬─────────┬─────────┐")
+        print("│ Nr │            Title             │   Year   │ Quality\
+ │  Rating  │    Genre    │  Seeds  │  Peers  │")
+        print("│────┼──────────────────────────────┼──────────┼────────\
+─┼──────────┼─────────────┼─────────┼─────────│")
         for i, movie in enumerate(result):
-            print("┃{nr: >3} ┆\x1b[1;36m{title-short: <30}\x1b[0m┆{year:\
-^10}┆\x1b[1;32m{quality: ^9}\x1b[0m\
-┆\x1b[1;33m{rating: >10}\x1b[0m┆{genre: ^13}┆{seeds: >8} ┆{peers: >8} \
-┃".format(**dict(nr=i+1, **movie)))
-        print("┗━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━┷━━━━━━━━\
-━┷━━━━━━━━━━┷━━━━━━━━━━━━━┷━━━━━━━━━┷━━━━━━━━━┛")
+            print("│{nr: >3} │\x1b[1;36m{title-short: <30}\x1b[0m│{year:\
+^10}│\x1b[1;32m{quality: ^9}\x1b[0m\
+│\x1b[1;33m{rating: >10}\x1b[0m│{genre: ^13}│{seeds: >8} │{peers: >8} \
+│".format(**dict(nr=i+1, **movie)))
+        print("└────┴──────────────────────────────┴──────────┴────────\
+─┴──────────┴─────────────┴─────────┴─────────┘")
         nr = input_number("Enter number of movie (enter to see more): ", 0)
     watch_movie(result[nr-1]['torrent'], result[nr-1]['imdb'],
                 "{title}".format(**result[nr-1]))
