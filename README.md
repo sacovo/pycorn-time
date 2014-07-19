@@ -46,3 +46,7 @@ After the first a default file will be written:
 #sort = date    # date, seeds, peers, size, alphabet, rating, downloaded, year
 #order = desc   # desc, asc
 ```
+
+
+## Screenshots
+![](https://raw.githubusercontent.com/sacovo/pycorn-time/gh-pages/images/2014-07-19--1405785255_956x511_scrot.png)
