@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # This file is part of 'pycorn-time' a cli-version of popcorntime, a torrent
 # streaming software
@@ -24,16 +23,22 @@ import urllib.parse
 import subprocess
 import os
 import webbrowser
-from unified_api import search_movie, search_tv_show
+from pycorn.unified_api import search_movie, search_tv_show
 settings_dict = {
     'player_command': '/usr/bin/env peerflix "%s" --mplayer',
     'imdb_command': '/bin/xdg-open %s',
     'download_command': '/usr/bin/env aria2c -d {location} "{torrent_link}"'
     }
 
+config_path = os.path.join(os.environ['HOME'], '.pycorn.conf')
+
+if not os.path.isfile(config_path):
+    import shutil
+    shutil.copyfile('default_config.conf', config_path)
+
 
 def read_config():
-    with open(os.path.join(os.environ['HOME'], '.pycorn.conf'), "r") as conf:
+    with open(config_path, "r") as conf:
         conf_dict = {
             'limit': '20',
             'quality': 'all',
@@ -98,7 +103,8 @@ def watch_movie(torrent_link, imdb='', movie_title=''):
         if choice == 'w':
             print("Starting stream, this could take a while...")
             try:
-                subprocess.call([settings_dict['player_command'] % torrent_link, ],
+                subprocess.call([settings_dict['player_command'] %
+                                torrent_link, ],
                                 shell=True, stdin=subprocess.PIPE)
             except KeyboardInterrupt:
                 pass
@@ -174,8 +180,6 @@ def _search_movie():
 
 def main():
     i = input_wrapper("Search (m)ovie, tv (s)how or (q)uit [m]: ") or 'm'
-    if i == 'q':
-        return 1
     if i == 's':
         return search_show()
     if i == 'm':
@@ -184,6 +188,7 @@ def main():
         print("Invalid input! ;(")
         return 0
 
-code = 0
-while code == 0:
-    code = main()
+
+def main_loop():
+    while 1:
+        main()
