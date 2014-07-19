@@ -98,6 +98,11 @@ class EztvAPI(object):
             if all(x in tv_show for x in terms):
                 # get the id of the show
                 id_tv_show = re.search(r"value=\"(\d+)\"", tv_show)
+                if id_tv_show is None:
+                    raise TVShowNotFound('The TV Show "%s" has not been found.'
+                                     % ' '.join(terms), None)
+
+
                 self._id_tv_show = id_tv_show.group(1)
                 break
 

@@ -33,9 +33,9 @@ settings_dict = {
 config_path = os.path.join(os.environ['HOME'], '.pycorn.conf')
 
 if not os.path.isfile(config_path):
-    from pkg_resources import resource_string
+    from pkg_resources import resource_filename
     import shutil
-    shutil.copyfile(resource_string(__name__, 'default.conf'), config_path)
+    shutil.copyfile(resource_filename(__name__, 'default.conf'), config_path)
 
 
 def read_config():
@@ -96,11 +96,10 @@ def input_number(prompt, empty_value='', color=8):
 
 def watch_movie(torrent_link, imdb='', movie_title=''):
     while 1:
-        null = open('NUL', "w")
         print("\x1b[1;35m{}\x1b[0m".format(movie_title))
-        choice = input_wrapper("(W)atch selected movie, open (I)MDb, (d)ownl" +
-                               "oad movie or (r)eturn to main menu: ", 4) \
-            or 'w'
+        choice = input_wrapper("(W)atch movie, open (I)MDb, (d)ownl" +
+                               "oad, go (b)ack or " +
+                               "(r)eturn to the main menu: ", 4) or 'w'
         if choice == 'w':
             print("Starting stream, this could take a while...")
             try:
@@ -123,9 +122,10 @@ def watch_movie(torrent_link, imdb='', movie_title=''):
                             torrent_link=torrent_link, location=path)],
                             shell=True)
 
-        null.close()
         if choice == 'r':
             return 0
+        if choice == 'b':
+            return 1
 
 
 def search_show():
@@ -139,10 +139,19 @@ def search_show():
         print("No results! :/")
         return 0
 
-    s = input_number("Enter Season {!r}: ".format(list(result.keys())))
-    e = input_number("Enter Episode {!r}: ".format(list(result[s].keys())))
-    imdb = 'http://www.imdb.com/find?s=' + urllib.parse.quote(term)
-    watch_movie(result[s][e], imdb, term.title())
+    code = 1
+    while code == 1:
+        s = input_number("Enter Season {!r}: ".format(list(result.keys())))
+        if s not in result.keys():
+            continue
+        e = input_number("Enter Episode {!r}: ".format(list(result[s].keys())))
+        if e not in result[s].keys():
+            continue
+        imdb = 'http://www.imdb.com/find?s=' + urllib.parse.quote(term)
+        code = watch_movie(result[s][e], imdb,
+                           "{title} S{s:02}E{e:02}".format(
+                               title=term.title(),
+                               s=s, e=e))
     return 0
 
 
@@ -154,7 +163,8 @@ def _search_movie():
     params.update(read_config())
 
     nr = 0
-    while nr == 0:
+    code = 1
+    while nr == 0 and code == 1:
         params['set'] += 1
         result = search_movie(**params)
         if result is None:
@@ -174,8 +184,11 @@ def _search_movie():
         print("└────┴──────────────────────────────┴──────────┴────────\
 ─┴──────────┴─────────────┴─────────┴─────────┘")
         nr = input_number("Enter number of movie (enter to see more): ", 0)
-    watch_movie(result[nr-1]['torrent'], result[nr-1]['imdb'],
-                "{title}".format(**result[nr-1]))
+        if nr > 0:
+            code = watch_movie(result[nr-1]['torrent'], result[nr-1]['imdb'],
+                               "{title}".format(**result[nr-1]))
+            params['set'] -= 1
+        nr = 0
     return 0
 
 

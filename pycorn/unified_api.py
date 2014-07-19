@@ -18,7 +18,7 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 # 02110-1301, USA.
 from pycorn.eztv_api import EztvAPI, EztvException
-import pycorn.yts_api
+from pycorn import yts_api
 
 
 def shorten(s, l, r=">"):
