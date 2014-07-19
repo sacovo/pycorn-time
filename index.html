@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <title>Pycorn-time by sacovo</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>Pycorn-time</h1>
+        <h2>A CLI-Version of popcorntime, programmed in python.</h2>
+
+        <section id="downloads">
+          <a href="https://github.com/sacovo/pycorn-time/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/sacovo/pycorn-time/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/sacovo/pycorn-time" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h1>
+<a name="pycorn-time" class="anchor" href="#pycorn-time"><span class="octicon octicon-link"></span></a>PyCorn Time</h1>
+
+<p>PyCorn Time is a clone of the popular project Popcorntime, but it is implemented in Python and doesn't have a graphical user interface but a command line interface.</p>
+
+<h2>
+<a name="pre-requisites" class="anchor" href="#pre-requisites"><span class="octicon octicon-link"></span></a>Pre-Requisites</h2>
+
+<p>In order to work correctly PyCorn needs a few things already installed:</p>
+
+<ul>
+<li>A media player, the default is mplayer, but you can change this as shown below</li>
+<li>
+<a href="https://github.com/mafintosh/peerflix">Peerflix</a> for streaming the torrents</li>
+<li>
+<a href="https://pypi.python.org/pypi/beautifulsoup4/">BeautifulSoup</a>, this is used to get parse html. You can install it this way: ´pip install beautifulsoup4´</li>
+</ul><h2>
+<a name="installing" class="anchor" href="#installing"><span class="octicon octicon-link"></span></a>Installing</h2>
+
+<p>To install PyCorn Time simply clone the github repository and run the setup.py file:</p>
+
+<pre><code>$ git clone https://github.com/sacovo/pycorn-time.git
+$ cd pycorn-time
+$ python setup.py install # This might require root
+</code></pre>
+
+<p>After installing you can run the program:
+´´´
+$ pycorntime
+´´´</p>
+
+<h2>
+<a name="configuration" class="anchor" href="#configuration"><span class="octicon octicon-link"></span></a>Configuration</h2>
+
+<p>To configure the behavior of the program you can use the file ´~/.pycorn.conf´.
+After the first a default file will be written:</p>
+
+<pre><code># This is the config file for pycorntime
+# To change a value uncomment the line and make your changes
+
+# Commands
+
+#player_command = /usr/bin/env peerflix "%s" --mplayer
+#imdb_command = /bin/xdg-open %s
+#download_command = /usr/bin/env aria2c -d {location} "{torrent_link}"
+
+# Uncomment this to disable the welcome message
+#show_welcome = false
+
+# YTS-Api values, more information: https://yts.re/api#listDocs
+
+#limit = 20     # 1 - 50 (inclusive)
+#quality = all  # 720p, 1080p, 3D, All
+#rating = 0     # 0 - 9 (inclusive)
+#sort = date    # date, seeds, peers, size, alphabet, rating, downloaded, year
+#order = desc   # desc, asc
+</code></pre>
+      </section>
+    </div>
+
+    
+  </body>
+</html>
