@@ -97,8 +97,11 @@ def watch_movie(torrent_link, imdb='', movie_title=''):
             or 'w'
         if choice == 'w':
             print("Starting stream, this could take a while...")
-            subprocess.call([settings_dict['player_command'] % torrent_link, ],
-                            shell=True)
+            try:
+                subprocess.call([settings_dict['player_command'] % torrent_link, ],
+                                shell=True, stdin=subprocess.PIPE)
+            except KeyboardInterrupt:
+                pass
 
         if choice == 'i':
             if settings_dict['imdb_command']:
