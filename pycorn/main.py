@@ -33,8 +33,9 @@ settings_dict = {
 config_path = os.path.join(os.environ['HOME'], '.pycorn.conf')
 
 if not os.path.isfile(config_path):
+    from pkg_resources import resource_string
     import shutil
-    shutil.copyfile('default_config.conf', config_path)
+    shutil.copyfile(resource_string(__name__, 'default.conf'), config_path)
 
 
 def read_config():

@@ -11,7 +11,7 @@ setup(
     version="0.1.1",
     packages=find_packages(),
     package_data={
-        'pycorn': ['default_config.conf'],
+        'pycorn': ['default.conf'],
         },
     include_package_data=True,
 
