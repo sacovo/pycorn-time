@@ -27,7 +27,8 @@ from pycorn.unified_api import search_movie, search_tv_show
 settings_dict = {
     'player_command': '/usr/bin/env peerflix "%s" --mplayer',
     'imdb_command': '/bin/xdg-open %s',
-    'download_command': '/usr/bin/env aria2c -d {location} "{torrent_link}"'
+    'download_command': '/usr/bin/env aria2c -d {location} "{torrent_link}"',
+    'show_welcome': 'true',
     }
 
 config_path = os.path.join(os.environ['HOME'], '.pycorn.conf')
@@ -204,5 +205,24 @@ def main():
 
 
 def main_loop():
+    if settings_dict['show_welcome'] is 'true':
+        print(
+            """
+            Hello to Pycorntime!
+    This is a clone from the popular streaming
+    program Popcorntime, which allows you to
+    directly stream torrents. This clone is
+    written in python and has a cli-interface.
+
+    The program uses the services yts.re for
+    movies and eztv.it for tv shows.
+    Per default it uses peerflix for streaming
+    the torrents, but you can change this in
+    the configuration file $HOME/.pycorn.conf.
+
+    You can also configure the things that are
+    sent to yts, just look in the file!
+    There you can also disable this message!
+""")
     while 1:
         main()
