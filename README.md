@@ -5,7 +5,23 @@ PyCorn Time is a clone of the popular project Popcorntime, but it is implemented
 In order to work correctly PyCorn needs a few things already installed:
 * A media player, the default is mplayer, but you can change this as shown below
 * [Peerflix](https://github.com/mafintosh/peerflix) for streaming the torrents
-* [BeautifulSoup](https://pypi.python.org/pypi/beautifulsoup4/), this is used to get parse html. You can install it this way: ´pip install beautifulsoup4´
+* [BeautifulSoup](https://pypi.python.org/pypi/beautifulsoup4/), this is used to get parse html from eztv.it
+
+To install this, you can run the following commands:
+
+
+```
+$ # Mplayer
+$ pacman -S mplayer # For archlinux
+$ apt-get install mplayer # For debian/ubuntu/mint
+$ yum install mplayer # For fedora/redhat
+$ # Peerflix
+$ pacaur -S peerflix # Or use another aur-helper on archlinux
+$ npm install -g peerflix # For all others
+$ # BeautifulSoup
+$ pip install beautifulsoup4
+```
+
 
 ## Installing
 To install PyCorn Time simply clone the github repository and run the setup.py file:
