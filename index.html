@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
 
-    <title>PyCorn Time by sacovo</title>
+    <title>Pycorn-time by sacovo</title>
   </head>
 
   <body>
@@ -43,8 +43,21 @@
 <li>
 <a href="https://github.com/mafintosh/peerflix">Peerflix</a> for streaming the torrents</li>
 <li>
-<a href="https://pypi.python.org/pypi/beautifulsoup4/">BeautifulSoup</a>, this is used to get parse html. You can install it this way: ´pip install beautifulsoup4´</li>
-</ul><h2>
+<a href="https://pypi.python.org/pypi/beautifulsoup4/">BeautifulSoup</a>, this is used to get parse html from eztv.it</li>
+</ul><p>To install them, you can run the following commands:</p>
+
+<pre><code>$ # Mplayer
+$ pacman -S mplayer # For archlinux
+$ apt-get install mplayer # For debian/ubuntu/mint
+$ yum install mplayer # For fedora/redhat
+$ # Peerflix
+$ pacaur -S peerflix # Or use another aur-helper on archlinux
+$ npm install -g peerflix # For all others
+$ # BeautifulSoup
+$ pip install beautifulsoup4
+</code></pre>
+
+<h2>
 <a name="installing" class="anchor" href="#installing"><span class="octicon octicon-link"></span></a>Installing</h2>
 
 <p>To install PyCorn Time simply clone the github repository and run the setup.py file:</p>
@@ -85,6 +98,11 @@ After the first a default file will be written:</p>
 #sort = date    # date, seeds, peers, size, alphabet, rating, downloaded, year
 #order = desc   # desc, asc
 </code></pre>
+
+<h2>
+<a name="screenshots" class="anchor" href="#screenshots"><span class="octicon octicon-link"></span></a>Screenshots</h2>
+
+<p><img src="https://raw.githubusercontent.com/sacovo/pycorn-time/gh-pages/images/2014-07-19--1405785255_956x511_scrot.png" alt=""></p>
       </section>
     </div>
 
