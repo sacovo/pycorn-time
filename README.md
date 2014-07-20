@@ -7,7 +7,7 @@ In order to work correctly PyCorn needs a few things already installed:
 * [Peerflix](https://github.com/mafintosh/peerflix) for streaming the torrents
 * [BeautifulSoup](https://pypi.python.org/pypi/beautifulsoup4/), this is used to get parse html from eztv.it
 
-To install this, you can run the following commands:
+To install them, you can run the following commands:
 
 
 ```
