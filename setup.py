@@ -15,7 +15,7 @@ setup(
         },
     include_package_data=True,
 
-    install_requires=['beautifulsoup4>=4.3.2'],
+    install_requires=['beautifulsoup4>=4.3.2', 'requests'],
 
     author="Sandro Covo",
     author_email="sandro@covo.ch",
